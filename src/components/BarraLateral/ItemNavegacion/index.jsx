@@ -9,6 +9,7 @@ const ItemListaEstilizado = styled.li`
     align-items: center;
     gap: 16px;
     color: ${props => props.$activo ? "#7B78E5" : "#D9D9D9"};
+    font-family: ${props => props.$activo ? "GandhiSansBold" : "GandhiSansRegular"};
 `
 
 const ImagenEstilizada = styled.img`
