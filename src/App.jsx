@@ -3,7 +3,9 @@ import GlobalStyles from "./components/GlobalStyles"
 import Cabecera from "./components/Cabecera"
 import BarraLateral from "./components/BarraLateral"
 import Banner from "./components/Banner"
-import banner from './assets/banner.png'
+import banner from "./assets/banner.png"
+import Galeria from "./components/Galeria"
+import fotos from "./fotos.json"
 
 
 const FondoGradiente = styled.div`
@@ -22,7 +24,15 @@ const MainContainer = styled.main`
   gap: 24px;
 `
 
+const ContenidoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
+
 function App() {
+
+  
 
   return (
     <>
@@ -32,10 +42,11 @@ function App() {
           <Cabecera />
           <MainContainer>
             <BarraLateral />
-            <Banner texto='La galería más completa de todo el espacio' backgroundImage={banner} />
-
+            <ContenidoGaleria>
+              <Banner texto='La galería más completa de todo el espacio' backgroundImage={banner} />
+              <Galeria />
+            </ContenidoGaleria>
           </MainContainer>
-
         </AppContainer>
       </FondoGradiente>
     </>
