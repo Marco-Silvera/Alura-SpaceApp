@@ -16,15 +16,19 @@ function BarraLateral() {
                     </ItemNavegacion>
 
                     <ItemNavegacion iconoActivo='../../../public/iconos/mas-vistas-activo.png' iconoInactivo='../../../public/iconos/mas-vistas-inactivo.png'>
-                        Mas visitados
+                        Más vistas
                     </ItemNavegacion>
 
-                    <ItemNavegacion iconoActivo='../../../public/iconos/mas-vistas-activo.png' iconoInactivo='../../../public/iconos/mas-vistas-inactivo.png'>
-                        Mas visitados
+                    <ItemNavegacion iconoActivo='../../../public/iconos/me-gusta-activo.png' iconoInactivo='../../../public/iconos/me-gusta-inactivo.png'>
+                        Más Me Gusta
                     </ItemNavegacion>
 
-                    <ItemNavegacion iconoActivo='../../../public/iconos/mas-vistas-activo.png' iconoInactivo='../../../public/iconos/mas-vistas-inactivo.png'>
-                        Mas visitados
+                    <ItemNavegacion iconoActivo='../../../public/iconos/nuevas-activo.png' iconoInactivo='../../../public/iconos/nuevas-inactivo.png'>
+                        Nuevas
+                    </ItemNavegacion>
+
+                    <ItemNavegacion iconoActivo='../../../public/iconos/sorprendeme-activo.png' iconoInactivo='../../../public/iconos/sorprendeme-inactivo.png'>
+                        Sorpréndeme
                     </ItemNavegacion>
                 </ListaEstilizada>
             </nav>
