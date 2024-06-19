@@ -6,6 +6,7 @@ import Banner from "./components/Banner"
 import banner from "./assets/banner.png"
 import Galeria from "./components/Galeria"
 import fotos from "./fotos.json"
+import { useState } from "react"
 
 
 const FondoGradiente = styled.div`
@@ -32,7 +33,7 @@ const ContenidoGaleria = styled.section`
 
 function App() {
 
-  
+  const [fotosDeGaleria, setFotosDeGaleria] =useState(fotos)
 
   return (
     <>
@@ -44,7 +45,7 @@ function App() {
             <BarraLateral />
             <ContenidoGaleria>
               <Banner texto='La galería más completa de todo el espacio' backgroundImage={banner} />
-              <Galeria />
+              <Galeria fotos={fotosDeGaleria}/>
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
