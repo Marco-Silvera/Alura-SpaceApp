@@ -1,6 +1,7 @@
 import { styled } from "styled-components"
 import Titulo from "../../Titulo"
-import fotos from '../../../fotos-populares.json'
+
+import fotos from './fotos-populares.json'
 
 const ColumnaFotos = styled.section`
     display: flex;

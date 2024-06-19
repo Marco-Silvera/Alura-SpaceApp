@@ -1,40 +1,46 @@
-import React from 'react'
-import Titulo from '../Titulo'
-import Tag from './Tags'
-import Populares from './Populares'
-import styled from 'styled-components'
-import Imagen from './Imagen'
+import styled from "styled-components"
+import Titulo from "../Titulo"
+import Populares from "./Populares"
+import Tag from "./Tags"
+import Imagen from "./Imagen"
 
 const GaleriaContainer = styled.div`
     display: flex;
+    gap: 24px;
 `
 
 const SeccionFluida = styled.section`
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+const ImagenesContainer = styled.section`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
 `
 
-const SectionGaleria =styled.section`
-    display: grid;
-    gap: 40px;
-    grid-template-columns: repeat(3,1fr);
-`
 
-function Galeria({ fotos = [] }) {
+const Galeria = ({ fotos = [], alSeleccionarFoto }) => {
+
     return (
         <>
             <Tag />
             <GaleriaContainer>
                 <SeccionFluida>
-                    <Titulo>
-                        Navegue por la galeria
-                    </Titulo>
-                    <SectionGaleria>
-                        {fotos.map(foto => {
-                            return <Imagen key={foto.id}>{foto.titulo}</Imagen>
-                        })}
-                    </SectionGaleria>
+                    <Titulo>Navegue por la galería</Titulo>
+                    <ImagenesContainer>
+                        {fotos.map(foto => <Imagen
+                            alSolicitarZoom={alSeleccionarFoto}
+                            key={foto.id}
+                            foto={foto} />)
+                        }
+                    </ImagenesContainer>
                 </SeccionFluida>
                 <Populares />
+
             </GaleriaContainer>
         </>
     )
