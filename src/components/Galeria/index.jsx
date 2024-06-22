@@ -16,10 +16,21 @@ const SeccionFluida = styled.section`
     gap: 20px;
 `
 const ImagenesContainer = styled.section`
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @media (min-width: 480px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 1440px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (min-width: 2000px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 `
 
 

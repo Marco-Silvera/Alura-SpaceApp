@@ -18,7 +18,7 @@ const DialogEstilizado = styled.dialog`
     background: transparent;
     padding: 0;
     border: 0;
-    width: 1156px;
+    width: 70%;
     display: flex;
     justify-content: center;
     form {
