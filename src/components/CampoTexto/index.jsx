@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import search from '../../../public/iconos/search.png'
+import { useRef } from "react"
 
 const ContainerEstilizado = styled.div`
     position: relative;
@@ -27,13 +28,17 @@ const IconoLupa = styled.img`
     right: 10px;
     width: 38px !important;
     height: 38px;
+    cursor: pointer;
 `
 
-function CampoTexto() {
+function CampoTexto({ setConsulta }) {
+
+    const cajaConsulta = useRef(null)
+
     return (
         <ContainerEstilizado>
-            <CampoTextoEstilizado type="text" placeholder="¿Qué estas buscando?" />
-            <IconoLupa src={search} alt="Icono de lupa" />
+            <CampoTextoEstilizado ref={cajaConsulta} type="text" placeholder="¿Qué estas buscando?" />
+            <IconoLupa src={search} alt="Icono de lupa" onClick={() => { setConsulta(cajaConsulta.current.value) }} />
         </ContainerEstilizado>
     )
 }

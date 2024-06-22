@@ -34,7 +34,7 @@ const ImagenesContainer = styled.section`
 `
 
 
-const Galeria = ({ fotos = [], alSeleccionarFoto, alAlternarFavorito }) => {
+const Galeria = ({ fotos = [], alSeleccionarFoto, alAlternarFavorito, consulta }) => {
 
     return (
         <>
@@ -43,11 +43,14 @@ const Galeria = ({ fotos = [], alSeleccionarFoto, alAlternarFavorito }) => {
                 <SeccionFluida>
                     <Titulo>Navegue por la galería</Titulo>
                     <ImagenesContainer>
-                        {fotos.map(foto => <Imagen
-                            alAlternarFavorito={alAlternarFavorito}
-                            alSolicitarZoom={alSeleccionarFoto}
-                            key={foto.id}
-                            foto={foto} />)
+                        {fotos.filter(foto => {
+                            return consulta == '' || foto.titulo.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(consulta.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+                        })
+                            .map(foto => <Imagen
+                                alAlternarFavorito={alAlternarFavorito}
+                                alSolicitarZoom={alSeleccionarFoto}
+                                key={foto.id}
+                                foto={foto} />)
                         }
                     </ImagenesContainer>
                 </SeccionFluida>
