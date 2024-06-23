@@ -5,24 +5,28 @@ import BarraLateral from "./components/BarraLateral"
 import Banner from "./components/Banner"
 import banner from "./assets/banner.png"
 import Galeria from "./components/Galeria"
-import fotos from "./fotos.json"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ModalZoom from "./components/ModalZoom"
 import Footer from "./components/Footer"
+import Cargando from "./components/Cargando"
 
 
 const FondoGradiente = styled.div`
   background: linear-gradient(175deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 `
 const AppContainer = styled.div`
   width: 100%;
   padding: 0 40px;
+  flex: 1;
 `
 
 const MainContainer = styled.main`
   width: 100%;
+  flex: 1;
   display: flex;
   gap: 24px;
 `
@@ -30,13 +34,14 @@ const MainContainer = styled.main`
 const ContenidoGaleria = styled.section`
   display: flex;
   flex-direction: column;
+  gap: 50px;
   flex-grow: 1;
 `
 
 function App() {
 
   const [consulta, setConsulta] = useState('')
-  const [fotosDeGaleria, setFotosDeGaleria] = useState(fotos)
+  const [fotosDeGaleria, setFotosDeGaleria] = useState([])
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null)
   const alAlternarFavorito = (foto) => {
 
@@ -54,6 +59,17 @@ function App() {
     }))
   }
 
+  useEffect(() => {
+
+    const getData = async () => {
+      const rest = await fetch('http://localhost:3000/fotos')
+      const data = await rest.json()
+      setFotosDeGaleria([...data])
+    }
+
+    setTimeout(() => getData(), 500)
+  }, [])
+
   return (
     <>
       <FondoGradiente>
@@ -64,7 +80,11 @@ function App() {
             <BarraLateral />
             <ContenidoGaleria>
               <Banner texto='La galería más completa de todo el espacio' backgroundImage={banner} />
-              <Galeria alSeleccionarFoto={foto => setFotoSeleccionada(foto)} fotos={fotosDeGaleria} alAlternarFavorito={alAlternarFavorito} consulta={consulta} />
+              {
+                fotosDeGaleria.length === 0 ?
+                  <Cargando /> :
+                  <Galeria alSeleccionarFoto={foto => setFotoSeleccionada(foto)} fotos={fotosDeGaleria} alAlternarFavorito={alAlternarFavorito} consulta={consulta} />
+              }
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
