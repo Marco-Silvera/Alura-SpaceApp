@@ -1,5 +1,7 @@
 import { styled } from "styled-components"
 import BotonIcono from "../../BotonIcono"
+import { useContext } from "react"
+import { GlobalContext } from "../../../context/GlobalContext"
 const Figure = styled.figure`
     width: ${props => props.$expandida ? '90%' : '100%'};
     margin: 0;
@@ -34,8 +36,9 @@ const Pie = styled.footer`
     align-items: center;
 `
 
-const Imagen = ({ foto, expandida = false, alSolicitarZoom, alAlternarFavorito }) => {
+const Imagen = ({ foto, expandida = false }) => {
 
+    const { dispatch } = useContext(GlobalContext)
     const iconoFavorito = foto.favorita ? '/iconos/favorito-activo.png' : '/iconos/favorito.png'
 
     return (
@@ -45,10 +48,10 @@ const Imagen = ({ foto, expandida = false, alSolicitarZoom, alAlternarFavorito }
                 <h3>{foto.titulo}</h3>
                 <Pie>
                     <h4>{foto.fuente}</h4>
-                    <BotonIcono onClick={() => alAlternarFavorito(foto)}>
+                    <BotonIcono onClick={() => dispatch({ type: 'ALTERNAR_FAVORITO', payload: foto })}>
                         <img src={iconoFavorito} alt="Icone de favorito" />
                     </BotonIcono>
-                    {!expandida && <BotonIcono aria-hidden={expandida} onClick={() => alSolicitarZoom(foto)}>
+                    {!expandida && <BotonIcono aria-hidden={expandida} onClick={() => dispatch({ type: 'SET_FOTO_SELECCIONADA', payload: foto })}>
                         <img src="/iconos/expandir.png" alt="Icono de expandir" />
                     </BotonIcono>}
                 </Pie>
